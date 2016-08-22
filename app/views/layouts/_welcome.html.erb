@@ -1,0 +1,13 @@
+<![if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]>
+
+<% if Rails.env == 'sandbox' %>
+  <div class="alert alert-error" style="z-index: 10000; position: fixed;"><strong>Test site!</strong></div>
+<% end %>
+<div id="welcomeDiv">
+  <% if current_user %>
+    <h6>Welcome, <%= current_user.name %>!</h6>
+  <% end %>
+</div>

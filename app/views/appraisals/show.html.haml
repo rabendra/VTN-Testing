@@ -1,0 +1,5 @@
+.form
+  - if current_user.is_appraiser?
+    = render :partial => "appraiser_show"
+  - else
+    = render :partial => "user_show"

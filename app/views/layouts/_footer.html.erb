@@ -1,0 +1,48 @@
+<!-- Left and right controls -->
+<footer class="footer-1">
+  <div class="footer_menu">
+    <ul>
+      <li><%= link_to "Home", root_path%></li>
+      <li><%= link_to "Affiliate Links", affiliate_path%></li>
+      <li><%= link_to 'About online appraisals', how_path(role: 'consumer') %></li>
+      <li><%= link_to "Blog", 'http://blog.valuethisnow.com' %></li>
+      <li><%= link_to('Testimonials', controller: '/home', action: :testimonials)%></li>
+      <li><%= link_to("Support", contact_path) %></li>
+      <li><%= link_to("Become an Appraiser", new_appraiser_registration_path) %></li>
+      <li><%= link_to("Privacy Policy", privacy_path) %></li>
+      <li><%= link_to("Terms of Service", terms_path) %></li>
+      <li><%= link_to "Login", new_user_session_path %></li>
+      <li><%= link_to("Contact Us", contact_path) %></li>
+      <li class="dropdown" id="togglemore">
+        <a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">More <b class="caret"></b></a>
+        <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="<%= url_for stores_path %>">Stores</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="<%= url_for roadshows_path %>">Road Show</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="<%= url_for salvages_path %>">Salvage</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="<%= url_for('/rare-books') %>">Rare Books</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="<%= url_for('/sports-memorabilia') %>">Sport Memorabilia</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="social_menu2">
+    <ul>
+      <li><a href="https://www.facebook.com/ValueThisNow">Facebook </a></li>
+      <li><a href="http://www.twitter.com/valuethisnow">Twitter</a></li>
+      <li><a href="https://www.pinterest.com/valuethisnow/">Pinterest</a></li>
+      <li><a href="#">Youtube</a></li>
+      <li><a href="#">Email</a></li>
+      <li><a href="#">Google+</a></li>
+    </ul>
+  </div>
+  <div class="copy">
+    <p>Copyright  2015 Valuethisnow, All Rights Reserved</p>
+  </div>
+  <div class="social_menu">
+    <ul>
+      <li><a href="https://www.facebook.com/ValueThisNow"><%= image_tag "fb.png" %></i></a></li>
+      <li><a href="http://www.twitter.com/valuethisnow"><%= image_tag "tw.png" %></a></li>
+      <li><a href="https://www.pinterest.com/valuethisnow/"><%= image_tag "pin.png" %></i></a></li>
+    </ul>
+  </div>
+</footer>

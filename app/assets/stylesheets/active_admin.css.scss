@@ -1,0 +1,29 @@
+// Active Admin CSS Styles
+@import "active_admin/mixins";
+@import "active_admin/base";
+
+// To customize the Active Admin interfaces, add your
+// styles here:
+#header {
+	background-image: none;
+	background-color: #93B429;
+}
+
+#header a, #header a:link {
+	color: white;
+}
+
+#header #utility_nav {
+	color: white;
+}
+
+table.dashboard .dashboard_section > h3 {
+	background: #93B429;
+	color: white;
+	text-shadow: none;
+}
+#customer_is_partner_input label, #customer_is_deny_email_input label{ padding-left: 0px;}
+
+.col-created_at, .col-updated_at {
+  width: 12%;
+}

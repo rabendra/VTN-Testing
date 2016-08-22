@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-9 col-md-offset-1">
+    <% if @role == "consumer" %>
+      <%= render 'how_works_consumers'%>
+      <%#= get_cms_content('/how-it-works-consumers') %>
+    <% elsif @role == "appraiser" %>
+      <%= render 'how_works_appraisers'%>
+      <%#= get_cms_content('/how-it-works-appraisers') %>
+    <% else %>
+      <div class="row">
+        <div class="col-md-5 col-md-offset-2">
+          <%= link_to 'For Consumers', how_path(:role => "consumer"), :class => "btn btn-success btn-large" %>
+        </div>
+        <div class="col-md-5">
+          <%= link_to 'For Appraisers', how_path(:role => "appraiser"), :class => "btn btn-success btn-large" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="login">
+    <h2>Resend confirmation instructions</h2>
+    <div class="my-login2">
+    <%= simple_form_for resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: 'form-horizontal' },
+      wrapper: :horizontal_form,
+      wrapper_mappings: {
+        check_boxes: :horizontal_radio_and_checkboxes,
+        radio_buttons: :horizontal_radio_and_checkboxes,
+        file: :horizontal_file_input,
+        boolean: :horizontal_boolean
+      } do |f| %>
+        <div class="row">
+          <div class="col-md-5">
+            <div class="sidn2">
+              <div class="form-group">
+                <label class="control-label" >Email<font color="#ff5a00">*</font></label>
+                <%= f.text_field :email,class: "form-control"%>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="reset"> 
+              <%= f.submit "Resent",class: "btn log-gre"%>
+            </div>
+          </div>
+        </div>
+    <%end%>
+    </div>
+  </div>
+</div>

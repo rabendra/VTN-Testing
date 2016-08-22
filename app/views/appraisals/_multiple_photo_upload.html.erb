@@ -1,0 +1,112 @@
+<% can_tag ||= can_tag.nil?
+   can_delete ||= can_delete.nil?
+   can_upload ||= can_upload.nil?
+   can_mark_as_primary ||= can_mark_as_primary.nil? %>
+<!-- Multiple image uploads -->
+<form id="fileupload" action="<%= appraisal_photos_path(@appraisal) %>" method="POST" enctype="multipart/form-data">
+  <div class="container">
+    <% unless current_user.is_appraiser? %>
+    <div class="row">
+      <h4 style="margin-left: 30px; margin-bottom: 15px;">Upload Images Of The Item Being Appraised</h4>
+    </div>
+    <% end %>
+    <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+    <div class="row fileupload-buttonbar">
+      <div class="span12">
+        <!-- The fileinput-button span is used to style the file input field as button -->
+        <% if can_upload %>
+        <span class="btn btn-success fileinput-button" style="height: 20px; margin-top: 0px;margin-right: 3px; margin-left: 30px;">
+          <i class="icon-plus icon-white"></i>
+          <span>Add files...</span>
+          <input type="file" name="photo[asset]" multiple>
+        </span>
+        <button type="submit" class="btn btn-success start">
+          <i class="icon-upload icon-white"></i>
+          <span>Start all uploads</span>
+        </button>
+        <% end %>
+      </div>
+    </div>
+    <!-- The loading indicator is shown during image processing -->
+    <div class="fileupload-loading"></div>
+    <br>
+    <!-- The table listing the files available for upload/download -->
+    <table id="appraisal_images_table" class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody></table>
+  </div>
+</form>
+
+
+<!-- The template to display files available for upload -->
+<script id="template-upload" type="text/x-tmpl">
+  {% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload fade">
+      <td class="preview"><span class="fade"></span></td>
+      <td class="name"><span>{%=file.name%}</span></td>
+      <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+      {% if (file.error) { %}
+        <td class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>
+        {% } else if (o.files.valid && !i) { %}
+        <td>
+          <div class="progress progress-success progress-striped active"><div class="bar" style="width:0%;"></div></div>
+        </td>
+        <td class="start">{% if (!o.options.autoUpload) { %}
+          <button class="btn btn-success">
+            <i class="icon-upload icon-white"></i>
+            <span>{%=locale.fileupload.start%}</span>
+          </button>
+          {% } %}</td>
+        {% } else { %}
+        <td colspan="2"></td>
+        {% } %}
+      <td class="cancel">{% if (!i) { %}
+        <button class="fileupload-buttonbar btn">
+          <i class="icon-ban-circle"></i>
+          <span>{%=locale.fileupload.cancel%}</span>
+        </button>
+        {% } %}</td>
+    </tr>
+    {% } %}
+</script>
+<!-- The template to display files available for download -->
+<script id="template-download" type="text/x-tmpl">
+  {% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download fade">
+      {% if (file.error) { %}
+        <td></td>
+        <td class="name"><span>{%=file.name%}</span></td>
+        <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+        <td class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>
+        {% } else { %}
+        <td class="preview">{% if (file.thumbnail_url) { %}
+          <a href="{%=file.url%}" title="{%=file.name%}" rel="gallery" download="{%=file.name%}"><img class="tagThumb" src="{%=file.thumbnail_url%}"></a>
+          {% } %}</td>
+        <td class="name">
+          <a href="{%=file.url%}" title="{%=file.file_file_name%}" rel="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">{%=file.name%}</a>
+        </td>
+        <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+        <td>
+        <% if can_tag %>
+          <a href="{%=file.tag_url%}" class="btn btn-success" target="_blank"><i class="icon-tag icon-white"></i> Tag</a>
+        <% end %>
+        </td>
+        <td>
+        <% if can_mark_as_primary %>
+        {% if (file.is_default) { %}
+          <a href="{%=file.set_as_default_url %}" class="btn btn-success btn-disabled btn_make_image_primary"><i class="icon-picture icon-white"></i> Primary</a>
+          {% } else { %}
+          <a href="{%=file.set_as_default_url %}" class="btn btn_make_image_primary"><i class="icon-picture"></i> Mark as Primary</a>
+          {% }  %}
+        <% end %>
+        </td>
+        {% } %}
+      <td class="delete">
+        <% if can_delete %>
+        <button class="fileupload-buttonbar btn" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}">
+          <i class="icon-trash"></i>
+          <span>{%=locale.fileupload.destroy%}</span>
+        </button>
+        <% end %>
+      </td>
+    </tr>
+    {% } %}
+</script>

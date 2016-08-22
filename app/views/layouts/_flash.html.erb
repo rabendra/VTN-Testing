@@ -1,0 +1,37 @@
+<![if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]>
+<!-- tb_check -->
+<% unless flash.empty? %>
+  <% if flash[:notice] %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-info alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= flash[:notice] %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% if flash[:alert] %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-dismissable alert_dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= flash[:alert] %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% if flash[:error] %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-danger alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= flash[:error] %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

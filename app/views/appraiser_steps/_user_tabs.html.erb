@@ -1,0 +1,29 @@
+<% # TODO Find a better place to store this monkeypatch
+  def wizard_path(goto_step = nil, options = {})
+    options = { :controller => :appraiser_steps,
+                :action     => 'show',
+                :id         => goto_step || params[:id],
+                :only_path  => true
+               }.merge options
+    url_for(options)
+  end %>
+  <div class="account">
+    <h2>Account</h2>
+    <div class="account-tab">
+      <ul>
+        <li><a href="<%= wizard_path(:personal) %>">Profile </a></li>
+        <li><a href="<%= wizard_path(:avatar) %>"> Image </a></li>
+        <li><a href="<%= wizard_path(:preferences) %>"> Notifications  </a></li>
+        <li><a href="<%= edit_user_registration_path %>">Reset password</a></li>
+        <li><a href="#"> Bulk Order Coupon</a></li>
+        <div class="clear"></div>
+      </ul>
+    </div>
+  </div>
+<!-- <ul class="nav nav-tabs">
+    <li <%#= css_class_for_active_page(path: wizard_path(:personal)) %> ><%#= link_to "Profile", wizard_path(:personal) %></li>
+    <li <%#= css_class_for_active_page(path: wizard_path(:avatar)) %> ><%#= link_to "Image", wizard_path(:avatar) %></li>
+    <li <%#= css_class_for_active_page(path: wizard_path(:preferences)) %> ><%#= link_to "Notifications", wizard_path(:preferences) %></li>
+    <li <%#= css_class_for_active_page(path: edit_user_registration_path) %> ><%#= link_to "Email & Password", edit_user_registration_path %></li>
+</ul>
+ -->

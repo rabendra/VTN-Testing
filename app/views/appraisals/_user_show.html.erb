@@ -1,0 +1,179 @@
+<div class="row">
+  <div class="col-md-10">
+    <h5><strong>Status :</strong> <%= getStringForActivityValue(@appraisal.status) %></h5>
+    <h5><strong>Type :</strong> <%= getStringForAppraisalType(@appraisal.selected_plan) %></h5>
+    <h3>
+      <%= @appraisal.title %>
+    </h3>
+  </div>
+  <div class="col-md-1" style="padding-top: 15px;">
+      <% if @appraisal.status != EActivityValueFinalized %>
+        <%= link_to 'Edit', edit_appraisal_path(@appraisal), :class => "btn btn-success btn-block" %>
+      <% end %>
+      <% if @appraisal.status == EActivityValueFinalized %>
+        <%= link_to show_shared_path(@appraisal, :format => :pdf), :class => "btn btn-success btn-sm" do %><span class="glyphicon glyphicon-download-alt"></span> Download Appraisal<% end %>
+      <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-7">
+    <div >
+      <table class="table table-condensed">
+        <tbody>
+          <% if @appraisal.status == EActivityValueFinalized%>
+            <tr>
+              <td><%= "File #".upcase %></td>
+              <td><%= @appraisal.id %></td>
+            </tr>
+            <tr>
+              <td><%= "Effective Date of Report".upcase %></td>
+              <td><%= @appraisal.updated_at.strftime("%d %b. %Y") %></td>
+            </tr>
+          <% end %>
+          <% if @appraisal.status == EActivityValueClaimed || @appraisal.status == EActivityValueFinalized %>
+            <tr>
+              <td><%= "Appraised by".upcase %></td>
+              <td><%= getProfileForUser(@appraisal.assigned_to) %></td>
+            </tr>
+          <% end %>
+          <tr>
+            <td>CATEGORY</td>
+            <td><% if @appraisal.status == EActivityValueFinalized %>
+              <%= @appraisal.classification.nil? ? "" : @appraisal.classification.category.name %>
+            <% else %>
+              <%= render :partial => "appraisals/edit_classification", :locals => {:appraisal => @appraisal} %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= "Title".upcase %></td>
+          <td><%= @appraisal.title %></td>
+        </tr>
+        <tr>
+          <td><%= "Description".upcase %></td>
+          <td><%= @appraisal.name %></td>
+        </tr>
+        <tr>
+          <td><%= "Approx. Date of Manufacture".upcase %></td>
+          <td><%= @appraisal.appraisal_info.year_of_manufacture %></td>
+        </tr>
+        <tr>
+          <td><%= "Country of Origin".upcase %></td>
+          <td><%= @appraisal.appraisal_info.country_of_origin %></td>
+        </tr>
+        <tr>
+          <td><%= "Signatures, Maker/Maker's, Dates, etc.".upcase %></td>
+          <td><%= @appraisal.appraisal_info.makers_marks %></td>
+        </tr>
+        <tr>
+          <td><%= "Inscriptions".upcase %></td>
+          <td><%= @appraisal.appraisal_info.inscriptions %></td>
+        </tr>
+        <tr>
+          <td><%= "Dimensions".upcase %></td>
+          <td><%= @appraisal.appraisal_info.dimensions %></td>
+        </tr>
+        <tr>
+          <td><%= "Condition".upcase %></td>
+          <td><%= @appraisal.appraisal_info.damage %></td>
+        </tr>
+        <tr>
+          <td><%= "Item History".upcase %></td>
+          <td><%= @appraisal.appraisal_info.item_history %></td>
+        </tr>
+        <% if @appraisal.status == EActivityValueFinalized %>
+          <tr>
+            <td><%= "Additional Extraordinary Assumptions".upcase %></td>
+            <td><%= @appraisal.appraisal_info.additional_ea %></td>
+          </tr>
+          <tr>
+            <td><%= "Comments".upcase %></td>
+            <td><%= @appraisal.appraisal_info.appraiser_comments %></td>
+          </tr>
+          <tr>
+            <td><%= "Replacement Value".upcase%></br><small>(Comparable)</small></td>
+            <td><%= print_replacement_cost(@appraisal) %></td>
+          </tr>
+          <tr>
+            <td><%= "Fair Market Value".upcase %></td>
+            <td><%= print_fair_market_value(@appraisal) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="col-md-5">
+  <%= render :partial => "photo_carousel" %>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= render  :partial => "photos/new_multiple_image_upload_form", locals: {photos: @photos} unless @appraisal.status == EActivityValueFinalized%>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-12">
+    <% if @appraisal.status == EActivityValueFinalized %>
+      <%= link_to show_shared_path(@appraisal, :format => :pdf), :class => "btn btn-success" do %><span class="glyphicon glyphicon-download-alt"></span> Download Appraisal<% end %>
+    <% end %>
+    <% if @appraisal.status == EActivityValueClaimed || @appraisal.status == EActivityValuePayed %>
+      <%= link_to 'Save and Continue', @appraisal, :class => "btn btn-success pull-right" %>
+    <% end %>
+  </div>
+</div>
+<% if @appraisal.status == EActivityValueClaimed || @appraisal.status == EActivityValueFinalized %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= render :partial => "appraisals/comments", :locals => {:appraisal => @appraisal, :comments => @appraisal_comments}%>
+    </div>
+  </div>
+<% end %>
+<% if @appraisal.status == EActivityValueFinalized %>
+  <div class="row">
+    <div class="col-md-12">
+      <% if @appraisal.status == EActivityValueFinalized %>
+        <button type="button" class="btn btn-mini btn-success" data-toggle="collapse" data-target="#supplemental_information">
+          <span class="glyphicon glyphicon-file"></span>
+          More (important supplemental information)
+        </button>
+        <% selected_plan = @appraisal.selected_plan
+        appraiser_type = @appraiser.appraiser_info.uspap.to_i
+
+        if (selected_plan == EAAppraisalTypeShortRestricted || selected_plan == EAAppraisalTypeLongRestricted || selected_plan == EAAppraisalTypeShortRestrictedPair || selected_plan == EAAppraisalTypeLongRestrictedPair) && appraiser_type == EAAppraiserUSPAPFamiliar
+          format = "appraisal_body_restricteduse_USPAP_compliant_yes"
+          option = 1
+        elsif (selected_plan == EAAppraisalTypeShortForSelling || selected_plan == EAAppraisalTypeLongForSelling || selected_plan == EAAppraisalTypeShortForSellingPair || selected_plan == EAAppraisalTypeLongForSellingPair) && appraiser_type == EAAppraiserUSPAPFamiliar
+          format = "appraisal_body_summary_forselling_USPAP_compliant_yes"
+          option =2
+        elsif (selected_plan == EAAppraisalTypeShortRestricted || selected_plan == EAAppraisalTypeLongRestricted || selected_plan == EAAppraisalTypeShortRestrictedPair || selected_plan == EAAppraisalTypeLongRestrictedPair) && appraiser_type != EAAppraiserUSPAPFamiliar
+          format = "appraisal_body_restricteduse_USPAP_compliant_no"
+          option =3
+        elsif (selected_plan == EAAppraisalTypeShortForSelling || selected_plan == EAAppraisalTypeLongForSelling || selected_plan == EAAppraisalTypeShortForSellingPair || selected_plan == EAAppraisalTypeLongForSellingPair) && appraiser_type != EAAppraiserUSPAPFamiliar
+          format = "appraisal_body_summary_forselling_USPAP_compliant_no"
+          option =4
+        else
+          raise "Invalid selected_plan and appraiser_type combination"
+        end
+      %>
+    <div id="supplemental_information" class="collapse">
+      <%= render :partial => "appraisals/formats/"+format, :locals => {:appraisal => @appraisal} %>
+      <% if @appraisal.status == EActivityValueFinalized %>
+        <div id="appraiser-info">
+          <% if (@appraiser.signature?) %> 
+            <%= image_tag "#{@appraiser.signature.standard.url}?id=#{rand(1000)}", :height => "100", :width => "250", class: "img-responsive"%>
+          <% elsif !(@appraiser.appraiser_extra.signature_json.nil? || @appraiser.appraiser_extra.signature_json.empty?) %>
+            <canvas id="appraiser-signature" height="100" width="250"></canvas>
+          <% end %>
+          <h4><%= @appraiser.name %></h4>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+</div>
+<% end %>

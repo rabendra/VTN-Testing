@@ -1,0 +1,35 @@
+<![if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]>
+
+<script type="text/javascript">
+$(document).ready(function() {  
+
+  var isEdit  = false;  
+
+  $('input').change(function() {  
+    isEdit = true;  
+  });  
+
+  $('select').change(function() {  
+    isEdit = true;  
+  }); 
+
+
+  // Ugly hack to prevent the tax generating key from triggering the "document changed" warning
+ $('#txt_tax_code').change(function () {
+   isEdit = false;
+ });
+
+  function checkIsEdit() {  
+    if(isEdit)  
+      return "You have modified some content. Please save this form.";  
+  }  
+
+  window.onbeforeunload = checkIsEdit;  
+  $(document).submit(function(){
+    isEdit = false;
+  });
+});  
+</script>

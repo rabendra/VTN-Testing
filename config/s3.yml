@@ -1,0 +1,24 @@
+development:
+  bucket: vtn-live
+  access_key_id: AKIAJ7A4YCVXYPBBBT7Q
+  secret_access_key: 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
+
+production:
+  bucket: vtn-live
+  access_key_id: AKIAJ7A4YCVXYPBBBT7Q
+  secret_access_key: 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
+
+staging:
+  bucket: vtn-staging
+  access_key_id: AKIAJ7A4YCVXYPBBBT7Q
+  secret_access_key: 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
+
+test:
+  bucket: vtn-test
+  access_key_id: AKIAJ7A4YCVXYPBBBT7Q
+  secret_access_key: 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
+
+sandbox:
+  bucket: vtn-sandbox
+  access_key_id: AKIAJ7A4YCVXYPBBBT7Q
+  secret_access_key: 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

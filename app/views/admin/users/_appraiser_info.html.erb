@@ -1,0 +1,18 @@
+<% unless extra_info.blank? %>
+	<table>
+		<thead>
+			<tr>
+				<th>Field</th>
+				<th>Value</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% extra_info.attributes.map do |k,v| %>
+			<tr>
+				<td><%= k %></td>
+				<td><%= v %></td>
+			</tr>
+			<% end%>
+		</tbody>
+	</table>
+<% end %>

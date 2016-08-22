@@ -1,0 +1,70 @@
+<%= stylesheet_link_tag("jquery.Jcrop.min") %>
+<center>
+  <div class="contentBlock">
+    <div class="sub_box">
+      <div class="row">
+        <div class="col-sm-7" id="avatar-original-div">
+          <%= image_tag @user.avatar_url(:standard), id: "cropbox" %>
+        </div>
+        <div class="col-sm-3">
+          <div id="avatar-preview-div">
+            <%= image_tag @user.avatar_url(:standard), :id => "avatar-preview"%>
+          </div>
+          <h4>Preview</h4>
+          <%= simple_form_for @user, :url => crop_avatar_path  do |f| %>
+            <% %w[x y w h].each do |attribute| %>
+            <%= f.input "crop_avatar_#{attribute}", :as => :hidden %>
+        <% end %>
+        </div>
+      </div>
+      <div class="form-actions">
+        <%= f.submit "Crop", :class => "btn btn-success" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</center>
+<%= javascript_include_tag("jquery.Jcrop.min") %>
+<script type="text/javascript">
+var AvatarCropper,
+__bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+
+jQuery(function() {
+  return new AvatarCropper();
+});
+
+AvatarCropper = (function() {
+
+  function AvatarCropper() {
+    this.updatePreview = __bind(this.updatePreview, this);
+
+    this.update = __bind(this.update, this);
+    $('#cropbox').Jcrop({
+      setSelect: [0, 0, 100, 100],
+      onSelect: this.update,
+      onChange: this.update,
+      aspectRatio: 1
+    });
+  }
+
+  AvatarCropper.prototype.update = function(coords) {
+    $('#<%= @user.type.downcase %>_crop_avatar_x').val(coords.x);
+    $('#<%= @user.type.downcase %>_crop_avatar_y').val(coords.y);
+    $('#<%= @user.type.downcase %>_crop_avatar_w').val(coords.w);
+    $('#<%= @user.type.downcase %>_crop_avatar_h').val(coords.h);
+    return this.updatePreview(coords);
+  };
+
+  AvatarCropper.prototype.updatePreview = function(coords) {
+    return $('#avatar-preview').css({
+      width: Math.round(100/coords.w * $('#cropbox').width()) + 'px',
+      height: Math.round(100/coords.h * $('#cropbox').height()) + 'px',
+      marginLeft: '-' + Math.round(100/coords.w * coords.x) + 'px',
+      marginTop: '-' + Math.round(100/coords.h * coords.y) + 'px'
+    });
+  };
+
+  return AvatarCropper;
+
+})();
+</script>
