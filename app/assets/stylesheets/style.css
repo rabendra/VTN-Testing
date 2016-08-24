@@ -1319,7 +1319,8 @@ a.product-gre:focus, a.product-gre:hover {
 	padding-right: 45px;
 }
 .sidn input {
-	padding: 23px;
+	/*padding: 23px;*/
+	height: 50px;
 }
 .btn.log-gre {
 	background: #7dc127;
@@ -5494,7 +5495,7 @@ p.marg {
 		font-size: 15px;
 		margin-left: 0;
 		padding-bottom: 15px;
-		width: 49%;
+		width: 23%;
 	}
 	.welcome h2.left-1, .my-tab {
 		margin-bottom: 20px;
