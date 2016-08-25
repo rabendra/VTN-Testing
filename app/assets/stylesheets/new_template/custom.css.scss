@@ -53,3 +53,32 @@
 .social a{
   font-size: 16px;
 }
+#country-origin .col-sm-3{
+  width: 16.66666667%;
+} 
+#country-origin .col-sm-9{
+  width: 100%;
+}
+#classification-ctg .col-sm-3{
+  width: 16.66666667%;
+} 
+#classification-ctg .col-sm-9{
+  width: 100%;
+}
+
+#country-origin .chosen-container .chosen-results li, #classification-ctg .chosen-container .chosen-results li{
+  text-align: left;
+}
+
+#country-origin .chosen-container-single .chosen-single,  #classification-ctg .chosen-container-single .chosen-single{
+  height: 34px;
+  text-align: left;
+  background: transparent;
+  border: 1px solid #ccc;
+}
+#country-origin .chosen-container-single .chosen-single div, #classification-ctg .chosen-container-single .chosen-single div {
+    top: 5px;
+}
+#isPair{
+  margin-top:8px;
+}

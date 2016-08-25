@@ -14,12 +14,13 @@ can_mark_as_primary ||= can_mark_as_primary.nil? %>
   <%= form_for(Photo.new) do |f| %>
     <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
     <div class="row fileupload-buttonbar">
-      <div class="col-md-2">
+      <div class="col-md-3">
         <!-- The fileinput-button span is used to style the file input field as button -->
         <% if can_upload %>
-          <span class="btn btn-success fileinput-button" id="btn_upload_image">
-            <span class="glyphicon glyphicon-plus"></span>
-            <span id="btn_image_upload_label">Add Photos</span>
+          <span class="fileinput-button my-upload" id="btn_upload_image">
+            <span id="btn_image_upload_label btn-block" class="img-upload">Add Photos</span>
+           
+
             <%= f.cl_image_upload(:picture,:html => { :multiple => true, id: "btn_upload_image_input" } ) %>
           </span>
         <% end %>
@@ -76,7 +77,11 @@ can_mark_as_primary ||= can_mark_as_primary.nil? %>
           </tbody>
         <% end %>
       </table>
+
     </div>
+  <%= link_to "Back", previous_wizard_path, class: "btn next-1 gre left-2 tp" %>
+      <%= link_to "Forward", next_wizard_path, class: "btn next-1 gre right-2 tp", id: "btnBuildWizardPhoto" %>
+    
   </div>
 <!-- Configure Cloudinary jQuery plugin -->
 <%= cloudinary_js_config %>
@@ -219,3 +224,19 @@ can_mark_as_primary ||= can_mark_as_primary.nil? %>
 
   });
 </script>
+
+
+<style type="text/css">
+  
+
+ .img-upload{
+    padding: 12px 20px;
+    background: #c6c6c6;
+    border-radius: 5px;
+    color: #fff;
+    position: relative;
+    top: 20px !important;
+    text-transform: uppercase;
+    font-size: 15px;
+ } 
+</style>
