@@ -52,8 +52,9 @@
             * Note, your name, email address and contact information will be kept confidential during this process. You can answer inquires from customers at your personal discretion.
           </div>
           <div class="bun2">
-            <button type="button" class="btn next-1 bge left-2" onClick="window.location.href='image.html'">Previous Step</button>
-            <button type="button" class="btn next-1 gre right-2" onClick="window.location.href='email.html'">Save and Continue</button>
+            <%= link_to "Previous Step", previous_wizard_path, :class => "btn next-1 bge left-2" %>
+            <%= f.button :submit, "Save and Continue", class: "btn next-1 gre right-2 tp pull-right" %>
+            <%#= f.submit "Save and Continue", :class => "btn next-1 gre right-2"%>
             <div class="clear"></div>
           </div>
         <% end %>
