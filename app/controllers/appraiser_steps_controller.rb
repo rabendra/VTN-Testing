@@ -4,7 +4,7 @@ class AppraiserStepsController < ApplicationController
 	before_filter :set_cache_buster
 
 	include Wicked::Wizard
-	steps :personal, :avatar, :professional, :trade, :bank, :signature, :categories, :contracts, :preferences
+	steps :personal, :avatar, :professional, :trade, :bank, :signature, :categories, :contracts, :preferences, :bulk_coupan
 
 	def show
 		@user = current_user

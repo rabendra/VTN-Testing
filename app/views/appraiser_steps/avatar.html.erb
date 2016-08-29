@@ -1,33 +1,40 @@
-<%= render :partial => "layouts/doc_has_changed" %>
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
-<!--     <div class="big-title">
-      Account
-    </div> -->
-    <%= render :partial => "appraiser_tabs" %>
-    <% if current_user.is_appraiser? %>
-      <div class="alert alert-info">
-        <i class="icon-warning-sign"></i>  <strong>NOTICE:</strong> This information is primarily for the private use of ValueThisNow.com and will not be made public. Only the appraiser’s name, image and the companies website address will be made public.
-      </div>
-    <% end %>
-    <%= simple_form_for @user, :url => wizard_path, :html => {:class => "form-horizontal"} do |f| %> 
-      <div class="row">
-        <div class="col-md-12">
-          <%= image_tag @user.avatar_url(:small), :size => "180x180", :class => "img-responsive"%></br>
+<div id="content" class="content">
+  <div class="container wal">
+    <div class="account">
+      <h2>Account</h2>
+      <div class="account-tab">
+        <%= render :partial => "appraiser_tabs" %>
+        <% if current_user.is_appraiser? %>
+          <div class="alert alert-info">
+            <i class="icon-warning-sign"></i>  <strong>NOTICE:</strong> This information is primarily for the private use of ValueThisNow.com and will not be made public. Only the appraiser’s name, image and the companies website address will be made public.
+          </div>
+        <% end %>
+        <div class="wel-form account-form">
+          <%= simple_form_for @user, :url => wizard_path, :html => {:class => "form-horizontal"} do |f| %> 
+            <div class="pad">
+              <div class="row">
+                <div class="col-md-3 sw4">
+                  <%= image_tag @user.avatar_url(:small), :size => "100%", :class => "img-responsive avatar-img"%></br>
+                  <span class="btn next-1 gre abc"><img src="/assets/new_template/camra.png"><%= link_to new_avatar_path, :class => "btn" do %>
+                  <span class="jj">Change Your Image</span></span><% end %>
+                </div>
+                <div class="col-md-9">
+                  <div class="up-img">
+                    <p>Uploading an image helps to create a more personal relationship between you and your 
+                      appraisers but is not a requirement.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bun2">
+              <!-- <button type="button" class="btn next-1 bge left-2" onClick="window.location.href='account.html'">Previous Step</button> --><%= link_to "Previous Step", previous_wizard_path, :class => "btn next-1 bge left-2" %>   
+              <%= f.submit "Save and Continue", :class => "btn next-1 gre right-2", :id => "btn_submit_avatar"%>
+            </div>
+          <%end%>
         </div>
+        <input type="hidden" name="has_avatar" id="has_avatar" value=<%= current_user.avatar? %>>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <%= link_to new_avatar_path, :class => "btn btn-success btn-sm" do %><span class="glyphicon glyphicon-camera"></span> Change your Image<% end %>
-        </div>
-      </div>
-      <div class="row" style="margin-top: 20px;">
-        <div class="col-md-12">
-          <%= link_to "Previous Step", previous_wizard_path, :class => "btn btn-default" %>   
-          <%= f.submit "Save and Continue", :class => "btn btn-success pull-right", :id => "btn_submit_avatar"%>
-        </div>
-      </div>
-    <% end%>
-    <input type="hidden" name="has_avatar" id="has_avatar" value=<%= current_user.avatar? %>>
+    </div>
   </div>
 </div>

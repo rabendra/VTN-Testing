@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   load_and_authorize_resource
   before_filter :authenticate_user!
   before_filter :load_appraisal
-
+  skip_before_filter :verify_authenticity_token
   def index
     @photos = @appraisal.photos.order("created_at DESC")
 
