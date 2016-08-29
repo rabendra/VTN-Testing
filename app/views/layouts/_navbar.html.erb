@@ -18,7 +18,8 @@
             <li><%= link_to("My Dashboard", dashboard_detail_path) %></li>
           <% end %>
           <li><%= link_to("Support", contact_path) %></li>
-          <li><%= link_to("Signout", destroy_user_session_path, method: :delete) %></li>
+          <li class="active" style="color: #74b425;margin-top: 18px;">WELCOME:<%= current_user.name %></li>
+          <li class="wel-login" style="margin-left: 14px;"><%= link_to("Signout", destroy_user_session_path, method: :delete) %></li>
         <% else %>
           <li><%= link_to("Blog", 'http://blog.valuethisnow.com') %></li>
           <li class="hidden-md"><%= link_to('Testimonials', controller: '/home', action: :testimonials) %></li>
