@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery-migrate-min
-//= require_tree ./new_template
 //= require jquery_ujs
+//= require_tree ./new_template
 // Loads all Bootstrap javascripts
 //= require bootstrap
 //= require jquery.validate
