@@ -1,6 +1,5 @@
 @charset "utf-8";
 /* CSS Document */
-
 .col-xs-15, .col-sm-15, .col-md-15, .col-lg-15 {
 	position: relative;
 	min-height: 1px;
@@ -11,7 +10,6 @@
 	width: 20%;
 	float: left;
 }
-
 @font-face {
 	font-family: 'simplificasimplifica';
 	src: url('simplifica_typeface_1-webfont.eot');
@@ -119,10 +117,6 @@ li.login a:hover {
 .ban_box h3 span {
 	color: #79b927;
 }
-/*.img_sec_2 h2{font-size:66px;
-          color:#010101;
-		  }*/
-
 .appraisal_appraisal_info_country_of_origin_chosen{
 	width: 100%;
 }
@@ -170,9 +164,7 @@ li.login a:hover {
 	padding: 0px 15px 15px 0px;
 	width: 116px;
 	height: 116px;
-
 }
-
 .box_2 {
 	width: 45%;
 	float: right;
