@@ -134,6 +134,7 @@ li.login a:hover {
 	color: #acacac;
 	padding: 40px 0px;
 	font-family: 'Roboto', sans-serif;
+	opacity: inherit;
 }
 .footer-1 ul li {
 	display: inline-block;
@@ -165,6 +166,13 @@ li.login a:hover {
 	width: 50%;
 	float: left;
 }
+.gallery-list td img{
+	padding: 0px 15px 15px 0px;
+	width: 116px;
+	height: 116px;
+
+}
+
 .box_2 {
 	width: 45%;
 	float: right;
@@ -254,7 +262,6 @@ p.white {
 .navbar-nav.welnav>li>a {
 	padding: 16px 18.5px;
 }
-.
 .box_1 p {
 	color: #fff;
 	font-family: 'proxima_novalight';
@@ -654,6 +661,7 @@ a {
 	padding: 7px;
 	background-color: white;
 	position: fixed;
+	z-index: 999;
 	background: transparent url(new_template/arrow_up.png) no-repeat top left;
 	background-position: 50% 50%;
 	width: 32px;
@@ -3066,7 +3074,7 @@ p.sel-tex {
 }
 .my-upload input[type=file] {
 	opacity: 0;
-	padding: 20px 0px;
+	padding: 0px 0px 20px;
 	display: block;
 	z-index: 999;
 	position: relative;
@@ -4423,6 +4431,9 @@ p.marg {
 @media (max-width:1024px) {
 	.appraisal_appraisal_info_country_of_origin_chosen{
 		width: 547px;
+	}
+	.account-tab ul li{
+		padding: 16.5px 26px;
 	}
 	label.control-label.des{
 		width: 133% !important;
@@ -6030,6 +6041,12 @@ p.marg {
 }
 @media only screen and (max-width: 800px) {
 	/* Force table to not be like tables anymore */
+	.account-tab ul li{
+		font-size: 13px;
+	}
+	.account-tab ul li{
+		padding: 12.5px 13px;
+	}
 	#no-more-tables table, #no-more-tables thead, #no-more-tables tbody, #no-more-tables th, #no-more-tables td, #no-more-tables tr {
 		display: block;
 	}
@@ -6381,9 +6398,23 @@ p.marg {
 		font-size: 14px;
 		line-height: 23px;
 	}
+	span.btn.next-1.abc a{
+		font-size: 17px !important;
+	}
 	.wel-form{
 		padding-top: 0px;
 	}
+	.profile-tabs .form-group{
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	.new-profile-tabs{
+		margin: 0px;
+	}
+	.new-profile-tabs .clear-box{
+		padding: 0px;
+	}
+}
 }
 
 @media (max-width:480px) {
@@ -6391,10 +6422,26 @@ p.marg {
 	.wel-form{
 		padding-top: 0px;
 	}
+	span.btn.next-1.abc a{
+		font-size: 17px !important;
+	}
 }
 @media (max-width:360px) {
 	.my-tab-list ul li{
 		font-size: 8px;
+	}
+	span.btn.next-1.abc a{
+		font-size: 17px !important;
+	}
+	.profile-tabs .form-group{
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	.new-profile-tabs{
+		margin: 0px;
+	}
+	.new-profile-tabs .clear-box{
+		padding: 0px;
 	}
 }
 
@@ -6416,6 +6463,15 @@ p.marg {
 		width: 20%;
 		float: left;
 
+	}
+	.sw4{
+		width: 270px;
+	}
+	.wel-form.account-form{
+		padding-top: 0px;
+	}
+	.pad{
+		margin-top: 0px;
 	}
 
 }

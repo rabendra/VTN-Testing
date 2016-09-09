@@ -64,6 +64,35 @@ module AppraisalsHelper
     end
   end
 
+  def check_step_appraisal_characteristics
+    if params[:id] == "characteristics"
+      return "color-gre"
+    elsif params[:id] != "plan" && params[:id] != "payment"
+      return "color-red"
+    else 
+      return "color-gre"
+    end
+  end
+
+  def check_step_appraisal_payment
+     if params[:id] == "payment"
+      return "color-gre"
+    elsif params[:id] == "plan" || params[:id] == "characteristics" || params[:id] == "general"
+      return "color-red"
+    end
+  end
+
+  def check_step_appraisal_plan
+     if params[:id] == "plan"
+      return "color-gre"
+    elsif params[:id] == "general" || params[:id] == "characteristics"
+      return "color-red"
+    else
+      return "color-gre"
+
+    end
+  end
+
   private
   def _get_linked_path(appraisal)
     return appraisal.status == EActivityValueCreated ? appraisal_build_index_path(appraisal) : appraisal

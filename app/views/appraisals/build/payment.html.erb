@@ -29,7 +29,7 @@
     <div class="welcome">
       <div class="hel">
         <h2 class="left-1">Payment and Confirm </h2>
-        <h2 class="right-1">5 Of 5</h2>
+        <h2 class="right-1">4 Of 4</h2>
         <div class="clear"></div>
       </div>
       <div class="row">
@@ -71,7 +71,8 @@
                   <div class="row">
                     <h4>Requested appraisal</h4>
                     <div class="col-md-3 col-sm-3 col-xs-3">
-                      <%= image_tag "/assets/new_template/pay1.png" %>
+                      <%#= image_tag "/assets/new_template/pay1.png" %>
+                      <%= image_tag(@appraisal.default_photo.picture_url(:medium), class: "img-responsive center-block") %>
                     </div>
                     <div class="col-md-2 col-sm-2 col-xs-2">
                       <h5><%= @appraisal.title %></h5>

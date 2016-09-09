@@ -11,11 +11,11 @@
     <h2>Account</h2>
     <div class="account-tab">
       <ul>
-        <li><a href="<%= wizard_path(:personal) %>">Profile </a></li>
-        <li><a href="<%= wizard_path(:avatar) %>"> Image </a></li>
-        <li><a href="<%= wizard_path(:preferences) %>"> Notifications  </a></li>
-        <li><a href="<%= edit_user_registration_path %>">Reset password</a></li>
-        <li><a href="<%= wizard_path(:bulk_coupan) %>"> Bulk Order Coupon</a></li>
+        <li class = "<%= get_profile_active_class %>"><a href="<%= wizard_path(:personal) %>">Profile </a></li>
+        <li class = "<%= get_image_active_class %>"><a href="<%= wizard_path(:avatar) %>"> Image </a></li>
+        <li class = "<%= get_preference_active_class %>"><a href="<%= wizard_path(:preferences) %>"> Notifications  </a></li>
+        <li class = "<%= get_reset_active_class %>"><a href="<%= edit_user_registration_path %>">Reset password</a></li>
+        <li class = "<%= get_bulk_active_class %>"><a href="<%= wizard_path(:bulk_coupan) %>"> Bulk Order Coupon</a></li>
         <div class="clear"></div>
       </ul>
     </div>

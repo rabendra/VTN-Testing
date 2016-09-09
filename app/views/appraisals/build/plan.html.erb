@@ -3,11 +3,11 @@
     <div class="welcome app">
       <div class="hel">
         <h2 class="left-1">Appraisal Type </h2>
-        <h2 class="right-1">4 of 5</h2>
+        <h2 class="right-1">3 of 4</h2>
         <div class="clear"></div>
       </div>
       <%= render "appraisals/build/appraisals_tab"%>
-      <%= simple_form_for(@appraisal, :url => wizard_path, :method => :put,  :html => {:multipart => true, :class => "form-horizontal"}) do |f| %>
+      <%= simple_form_for(@appraisal, :url => wizard_path, :method => :put,  :html => {:multipart => true, :class => "form-horizontal appraisal_plan"}) do |f| %>
         <div class="row">
           <div class="col-md-12">
             <div class="row">
@@ -57,7 +57,7 @@
                       </label>
                       <div class="my-select">
                         <div>
-                          <input id="checkbox1" type="checkbox" name="checkbox" value="1" unchecked>
+                          <input id="checkbox1" type="checkbox" name="checkbox" value="1"  unchecked>
                           <label id="check1" for="checkbox1"><span></span><span class="sele">select</span></label>
                         </div>
                       </div>
@@ -105,7 +105,7 @@
                       </label>
                       <div class="my-select">
                         <div>
-                          <input id="checkbox2" type="checkbox" name="checkbox" value="2" unchecked>
+                          <input id="checkbox2" type="checkbox" name="checkbox" value="2"  unchecked>
                           <label id="check2" for="checkbox2"><span></span><span class="sele">select</span></label>
                         </div>
                       </div>
@@ -167,7 +167,7 @@
                 </div>
                 <!-- <div class="col-md-5 five-two">
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                       <div class="top">
                         <h3>Top Seller</h3>
                       </div>
@@ -214,7 +214,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                       <div class="top"> </div>
                       <label for="checkbox5" class="jkl">
                         <div class="auc">
@@ -255,8 +255,8 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div> -->
+                  </div> 
+                </div>  -->
 
               </div>
             </div>  
@@ -271,23 +271,31 @@
           
           <div class="clear"></div>
           <div class="bun">
-          <%= f.input :selected_plan, as: :hidden %>
-            <%= link_to "Back", previous_wizard_path, class: "btn next-1 gre left-2 tp" %>
-            <%= f.button :submit, "Forward", class: "btn next-1 gre right-2 tp pull-right" %>
+           
+            <%#= link_to "Back", previous_wizard_path, class: "btn next-1 gre left-2 tp" %>
+            <%#= f.button :submit, "Forward", class: "btn next-1 gre right-2 tp pull-right" %>
             <%#= link_to "Forward", next_wizard_path, class: "btn next-1 gre right-2 tp pull-right" %>
           </div>
-        
+          <%= f.input :selected_plan, as: :hidden %>
         </div>
+        
       <% end %>  
     </div>
   </div>
 </div>
 <script type="text/javascript">
   $("input:checkbox ").click(function () {
-    $("[name="+$(this).prop('name')+"]").prop("checked", false);
-    $(this).prop("checked", true);
-    debugger
-    $("#appraisal_selected_plan").val(this.value)
-    this.val
+     $("[name="+$(this).prop('name')+"]").prop("checked", false);
+     $(this).prop("checked", true);
+    // debugger
+     $("#appraisal_selected_plan").val(this.value)
+    // this.value;
+    if ($("#isPair").is(':checked')){
+      var pair_val = $("#isPair")[0].value;
+      $("#appraisal_selected_plan").val(pair_val)
+    }
+    $('.simple_form').submit();    
+    
+    
 });
-</script>
+</script> 

@@ -9,12 +9,12 @@
         </a> inform </li>
       <li><a href="<%=wizard_path(:characteristics) %>">
         <div class="con-list">
-          <div class="green-no color-gre"> 2 </div>
+          <div class="green-no <%= check_step_appraisal_characteristics %>"> 2 </div>
         </div>
         </a>more information</li>
-      <li><a href="<%=wizard_path(:photos) %>">
+      <li><a href="<%=wizard_path(:plan) %>">
         <div class="con-list">
-          <div class="green-no color-gre"> 3 </div>
+          <div class="green-no <%= check_step_appraisal_plan %>"> 3 </div>
         </div>
         <!-- </a>upload</li>
       <li><a href="<%#=wizard_path(:plan) %>">
@@ -24,7 +24,7 @@
         </a>Select</li>
       <li><a href="<%=wizard_path(:payment) %>">
         <div class="con-list">
-          <div class="green-no color-gre"> 5 </div>
+          <div class="green-no <%= check_step_appraisal_payment %>"> 4 </div>
         </div>
         </a>Check Out</li>
     </ul>

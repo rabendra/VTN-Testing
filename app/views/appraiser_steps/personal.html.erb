@@ -1,5 +1,5 @@
 <%= render :partial => "layouts/doc_has_changed" %>
-<div class="row">
+<div class="row new-profile-tabs">
   <div class="container wal">
 <!--     <div class="big-title">
       Account
@@ -26,13 +26,13 @@
             <div class="wel-form account-form">
               <div class="pad">
                 <div class="row">
-                  <div class="col-md-12">
+                  <div class="col-md-12 profile-tabs">
                     <div class="form-group">
                       <div class="row">
                         <div class="col-md-3">
                           <label class="control-label">* Name</label>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8 clear-box">
                           <%= f.input :name,label: false,class: "form-control"%>
                         </div>
                       </div>
@@ -42,7 +42,7 @@
                         <div class="col-md-3">
                           <label class="control-label">* Email</label>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8 clear-box">
                           <%= f.input :email,label: false,class: "form-control"%>
                         </div>
                       </div>
@@ -53,7 +53,7 @@
                           <div class="col-md-3">
                             <label class="control-label">Address</label>
                           </div>
-                          <div class="col-md-8">
+                          <div class="col-md-8 clear-box">
                             <%= a.input :address,label: false,class: "form-control", :required => @user.is_appraiser?  %>
                           </div>
                         </div>
@@ -63,7 +63,7 @@
                           <div class="col-md-3">
                             <label class="control-label">City</label>
                           </div>
-                          <div class="col-md-8">
+                          <div class="col-md-8 clear-box">
                             <%= a.input :city,label: false,class: "form-control", :required => @user.is_appraiser?  %>
                           </div>
                         </div>
@@ -73,7 +73,7 @@
                           <div class="col-md-3">
                             <label class="control-label">State/Province</label>
                           </div>
-                          <div class="col-md-8">
+                          <div class="col-md-8 clear-box">
                             <%= a.input :state,label: false,class: "form-control", :required => @user.is_appraiser?  %>
                           </div>
                         </div>
@@ -83,7 +83,7 @@
                           <div class="col-md-3">
                             <label class="control-label">Country</label>
                           </div>
-                          <div class="col-md-8">
+                          <div class="col-md-8 clear-box">
                              <%= a.input :country, label: false,:priority => [ "United States" ], :required => @user.is_appraiser? %>
                           </div>
                         </div>
@@ -93,7 +93,7 @@
                           <div class="col-md-3">
                             <label class="control-label">Postal Code</label>
                           </div>
-                          <div class="col-md-8">
+                          <div class="col-md-8 clear-box">
                              <%= a.input :zip, label: false, :required => @user.is_appraiser? %>
                           </div>
                         </div>
@@ -103,7 +103,7 @@
                           <div class="col-md-3">
                             <label class="control-label">Phone</label>
                           </div>
-                          <div class="col-md-8">
+                          <div class="col-md-8 clear-box">
                              <%= a.input :phone1, label: false,:required => @user.is_appraiser? %>
                           </div>
                         </div>

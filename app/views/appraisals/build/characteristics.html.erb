@@ -34,47 +34,35 @@
                                 <div class="col-md-12">
                                   <%= a.input :makers_marks, :label => "Signatures, maker's marks, dates", :as => :text, :input_html => {:rows => 4}, hint: "(List any signatures, maker's marks or dates. If none, enter 'none'.)" %>
                                 </div>
-                            
-                            </div>
                           </div>
-                          <div class="col-md-12">
+                        </div>
+                        <div class="col-md-12">
                             
                               <div class="row">
                                 <div class="col-md-12">
                                   <%= a.input :inscriptions, :label => "Inscriptions, etc.", hint: "(List any inscriptions, monograms, dedications or other such markings. If none, enter 'none'.)" %>
                                 </div>
-                              </div>
-                            
-                          </div>
-
-                          <div class="col-md-12">
-                            <%= a.input :dimensions, :label => "Dimensions",required: true, hint: "(Enter the height, width, depth, diameter as appropriate.)" %>
-                          </div>
+                              </div>  
+                        </div>
+                        <div class="col-md-12">
+                          <%= a.input :dimensions, :label => "Dimensions",required: true, hint: "(Enter the height, width, depth, diameter as appropriate.)" %>
                         </div>
                       </div>
-                    
-                   
-                      
-                        <div class="row">
+                    </div>
+                    <div class="row">
                           <div class="">
                             <%= a.input :materials, :label => "Materials", :as => :text, :input_html => {:rows => 4}, hint: "What is it made out of?" %>
                           </div>
-                        </div>
-                      
-             
-                      
-                        <div class="row">
+                    </div>
+                    <div class="row">
                           <div class="">
                             <%= a.input :damage, :label => "Condition", required: true, :as => :text, :input_html => {:rows => 4}, hint: "(List any damages, old repairs, soiling, staining or other defects. If the item is mechanical or electrical, is it in good working condition?)" %>
                           </div>
-                        </div>
-                      
-                    </div>
+                    </div>  
                   </div>
                 <% end %>
-              </div>
-              <div class="">
-              <%= render  :partial => "photos/new_multiple_image_upload_form", locals: {photos: @photos} %>
+                <%= render  :partial => "photos/new_multiple_image_upload_form", locals: {photos: @photos} %>
+
               </div>
               <div class="bun">
                 <%= link_to "Back", previous_wizard_path, class: "btn next-1 gre left-2 tp" %>

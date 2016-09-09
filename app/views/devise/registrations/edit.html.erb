@@ -42,8 +42,10 @@
           </div>
         </div>
         <div class="bun2">
-          <button type="button" class="btn next-1 bge left-2" onClick="window.location.href='notice.html'">Previous Step</button>
-          <%= f.submit "Save", :class => "btn next-1 gre right-2"%>
+
+          <%= link_to "Previous Step", "/appraiser_steps/preferences", :class => "btn next-1 bge left-2" %>
+          <%#= f.submit "Save", :class => "btn next-1 gre right-2"%>
+          <%= link_to "Save and Continue", "/appraiser_steps/bulk_coupan", class: "btn next-1 gre right-2 tp pull-right" %>
           <div class="clear"></div>
         </div>
         <% end %>

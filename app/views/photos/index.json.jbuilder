@@ -1,3 +1,4 @@
+
 json.files do
   json.array!(@photos) do |photo|
     json.id photo.id
@@ -12,4 +13,5 @@ json.files do
     json.set_as_default_url url_for(:controller => :photos, :action => "set_as_default", :appraisal_id => @appraisal, :photo_id => photo.id)
   end
 end
+
 
