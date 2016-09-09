@@ -6848,9 +6848,8 @@ p.marg {
 	    color: #81c031 !important;
   }
 	.home-contact{
-	    max-width: 89%;}		
-	.home-contact {
-    top: 14%;
-    height: 60%;
+	    max-width: 89%;
+      top: 14%;
+      height: 60%;
 	}	
 }
