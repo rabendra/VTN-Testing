@@ -57,9 +57,8 @@ $(document).ready(function() {
   $('#myCarousel').fadeIn(1000);
    $('#myCarousel').carousel({
      interval:60000,
-     });
+   });
   $('#myCarousel').carousel(rand);
-  
 });
 $(document).ready(function() {
   var owl = $("#owl-demo");
